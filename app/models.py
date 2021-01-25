@@ -18,11 +18,14 @@ class Bird(models.Model):
     def __str__(self):
         return self.bird_name
 
+
 class Images(models.Model):
     title = models.CharField(max_length=50)
     document = models.ImageField(upload_to='images')
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     uploaded_at = models.DateTimeField(auto_now_add=True)
+    sharable = models.IntegerField(default=0)
+
     class Meta:
         db_table = 'Images'
 
@@ -35,6 +38,7 @@ class Videos(models.Model):
     video_file = models.FileField(upload_to='videos')
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     uploaded_at = models.DateTimeField(auto_now_add=True)
+    sharable = models.IntegerField(default=0)
 
     class Meta:
         db_table = 'Videos'

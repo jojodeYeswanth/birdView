@@ -14,24 +14,26 @@
         <h3 class="navbar-brand">Gallery</h3>
     </div>
     <div class="row">
-    {% if image_list %}
-        {% for image in image_list %}
+    {% if video_list %}
+        {% for video in video_list %}
             <div class="col-md-4">
                 <div class="card card-profile">
                     <div class="card-image">
-                        <img class="img" src="{{ image.document.url }}" />
+                        <video controls>
+                            <source src='{{ MEDIA_URL }}{{ video.video_file }}' type='video/mp4'>Your browser does not support the video tag.
+                        </video>
                     </div>
                     <div class="card-body">
-                        <p class="card-title">{{ image.title }}</p>
-                        {% if image.sharable %}
-                            <a href="{% url 'make-image-public' image.id %}" class="btn btn-raised btn-danger btn-round">public <i class="material-icons">public</i></a>
+                        <p class="card-title">{{ video.title }}</p>
+                        {% if video.sharable %}
+                            <a href="{% url 'make-video-public' video.id %}" class="btn btn-raised btn-danger btn-round">public <i class="material-icons">public</i></a>
                         {% else %}
-                            <a href="{% url 'make-image-public' image.id %}" class="btn btn-success btn-round">private <i class="material-icons">public_off</i></a>
+                            <a href="{% url 'make-video-public' video.id %}" class="btn btn-success btn-round">private <i class="material-icons">public_off</i></a>
                         {% endif %}
                     </div>
                     <div class="card-footer">
                     <div class="stats">
-                        <i class="material-icons">access_time</i> uploaded at {{ image.uploaded_at }}
+                        <i class="material-icons">access_time</i> uploaded at {{ video.uploaded_at }}
                     </div>
                 </div>
                 </div>
@@ -40,10 +42,10 @@
     {% else %}
         <div class="col-md-4">
             <br>
-            <p>No images available in Gallery</p>
+            <p>No videos available in Gallery</p>
         </div>
-
     {% endif %}
+
     </div>
     
 {% endblock content %}

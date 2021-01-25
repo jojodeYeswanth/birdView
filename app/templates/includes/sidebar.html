@@ -15,7 +15,10 @@
                     <a class="nav-link" href="{% url 'birds' %}"><i class="material-icons">favorite</i><p>Bird Profile</p></a>
                 </li>
                 <li class="nav-item {% if 'images' == segment %} active {% endif %}">
-                    <a class="nav-link" href="{% url 'images' %}"><i class="material-icons">image</i><p>Captured Images</p></a>
+                    <a class="nav-link" href="{% url 'images' %}"><i class="material-icons">image</i><p>Image Gallery</p></a>
+                </li>
+                <li class="nav-item {% if 'videos' == segment %} active {% endif %}">
+                    <a class="nav-link" href="{% url 'videos' %}"><i class="material-icons">video_library</i><p>Video Gallery</p></a>
                 </li>
                 <li class="nav-item {% if 'profile' == segment %} active {% endif %}">
                     <a class="nav-link" href="{% url 'profile' %}"><i class="material-icons">person</i><p>User Profile</p></a>

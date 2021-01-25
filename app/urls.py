@@ -14,11 +14,14 @@ urlpatterns = [
     path('select-option/', views.cageoption.as_view(), name='cageoption'),
     url(r'^bird-profile/$', views.BirdProfileView.as_view(), name='birds'),
     url(r'^image-list/$', views.BirdImageView.as_view(), name='images'),
+    url(r'^video-list/$', views.BirdVideoView.as_view(), name='videos'),
 
     url(r'^/(?P<stream_path>(.*?))/$', views.dynamic_stream, name="videostream"),
-    url(r'^detect-video/$', views.indexscreen, name='detect_video'),
+    url(r'^detect-video/$', views.index_screen, name='detect_video'),
     url(r'^image-capture/$', views.image_capture, name='image-capture'),
     url(r'^video-capture/$', views.video_capture, name='video-capture'),
+    path('make-image-public/<int:pk>/', views.make_image_public.as_view(), name='make-image-public'),
+    path('make-video-public/<int:pk>/', views.make_video_public.as_view(), name='make-video-public'),
 
     path('login/', login_view, name="login"),
     path('register/', register_user, name="register"),
