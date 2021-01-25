@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %} Birds profile {% endblock %}
+{% block stylesheets %}{% endblock stylesheets %}
+{% block content %}
+    <style type="text/css">
+    #button1 {
+        width: 300px;
+        height: 40px;
+        margin-right: 10px;
+    }
+    #button2 {
+        width: 300px;
+        height: 40px;
+        margin-left: 10px;
+    }
+    #container {
+        text-align: center;
+    }
+    </style>
+    <div class="row">
+    <img src="{% url 'videostream' stream_path='video' %}">
+    </div>
+    <script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'}),_trfd.push({'ap':'cpsh'},{'server':'p3plcpnl0769'}) </script>
+    <script src='https://img1.wsimg.com/tcc/tcc_l.combined.1.0.6.min.js'></script>
+    <form method="post" action="{% url 'image-capture' %}">
+        {% csrf_token %}
+        <br>
+        <div id="container">
+            <a href="{% url 'image-capture' %}"><button class="btn btn-primary pull-left" id="button1">Capture Photo</button></a>
+            <a href="{% url 'video-capture' %}"><button class="btn btn-primary pull-left" id="button2">Capture Video</button></a>
+        </div>
+
+    </form>
+
+{% endblock content %}
+{% block javascripts %}
+{% endblock javascripts %}

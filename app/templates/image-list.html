@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %} Birds profile {% endblock %}
+{% block stylesheets %}{% endblock stylesheets %}
+{% block content %}
+    <style>
+    .gallery-title
+        {
+            font-size: 36px;
+            color: #42B32F;
+            text-align: center;
+            font-weight: 500;
+            margin-bottom: 70px;
+        }
+        .gallery-title:after {
+            content: "";
+            position: absolute;
+            width: 7.5%;
+            left: 46.5%;
+            height: 45px;
+            border-bottom: 1px solid #5e5e5e;
+        }
+        .btn-default:active .filter-button:active {
+            background-color: #42B32F;
+            color: white;
+        }
+
+        .gallery_product {
+            margin-bottom: 30px;
+        }
+    </style>
+    <div class="navbar-wrapper">
+        <h3 class="navbar-brand">Gallery</h3>
+    </div>
+    <div class="row">
+    {% if image_list %}
+        {% for image in image_list %}
+            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe">
+                <img src="{{ image.document.url }}" style="width: 250px; height: 200px;" class="img-responsive">
+            <p>{{ image.title }}</p>
+        </div>
+        {% endfor %}
+    {% endif %}
+
+    </div>
+    
+{% endblock content %}
+{% block javascripts %}
+{% endblock javascripts %}

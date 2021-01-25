@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %} Dashboard {% endblock %}
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+    <div class="navbar-wrapper">
+        <h3 class="navbar-brand">Add Birds and Cages</h3>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header">
+                    <a href="{% url 'add-bird' %}" class="card-title" style="font-size: large"><b>Add Bird</b></a>
+                    <p class="card-category">Last Added Bird ID : <b>{{ last_bird.bird_id }}</b></p>
+                </div>
+            </div>
+        </div><div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header">
+                    <a href="{% url 'add-cage' %}" class="card-title" style="font-size: large"><b>Add Cage</b></a>
+                    <p class="card-category">Last Added Cage Number : <b>{{ last_cage.cage_num }}</b></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar-wrapper">
+        <h3 class="navbar-brand">View Birds</h3>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-primary card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">live_tv</i>
+                    </div>
+                    <h3 class="card-title"><b>Go Live</b></h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <a href="{% url 'detect_video' %}">Click here to watch live streaming</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-primary card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">image</i>
+                    </div>
+                    <h3 class="card-title"><b>Images</b></h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <a href="{% url 'images' %}">Click here to watch captured images</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-primary card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">video_library</i>
+                    </div>
+                    <h3 class="card-title"><b>Videos</b></h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <a href="">Click here to watch captured videos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar-wrapper">
+        <h3 class="navbar-brand">Bird Status</h3>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title"><b>Bird Status</b></h4>
+                    <p class="card-category">Last upload to database on {{ last_bird.uploaded_at }}</p>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-hover">
+                        <thead class="text-primary">
+                        <th>Bird ID</th>
+                        <th>Bird Type</th>
+                        <th>Bird Name</th>
+                        <th>Upload Time</th>
+                        <th>Status</th>
+                        </thead>
+                        <tbody>
+                        {% for i in bird_list %}
+                            <tr>
+                                <td>{{ i.bird_id }}</td>
+                                <td>{{ i.bird_type }}</td>
+                                <td>{{ i.bird_name }}</td>
+                                <td>{{ i.uploaded_at }}</td>
+                                <td>Healthy</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

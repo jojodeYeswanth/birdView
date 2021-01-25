@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %} Birds profile {% endblock %}
+{% block stylesheets %}{% endblock stylesheets %}
+{% block content %}
+    <div class="row">
+    {% for i in bird_list %}
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-primary card-header-icon">
+                    <div class="card-icon">
+                        <span>Bird ID: {{ i.bird_id }}</span>
+                    </div>
+                    <h3 class="card-title">
+                        <span class="primary"> <b>{{ i.bird_name }}</b> </span><br>
+                        <small>Gender  : {{ i.bird_gender }} </small><br>
+                        <small>Color : {{ i.bird_color }} </small>
+                    </h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons text-primary">ondemand_video</i> &nbsp;
+                        <a href="{% url 'detect_video' %}">Go Live</a>
+                    </div><br/>
+                    <div class="stats">
+                        <i class="material-icons text-primary">image</i> &nbsp;<br>
+                        <a href="{% url 'images' %}">Photos</a>
+                    </div><br/>
+                    <div class="stats">
+                        <i class="material-icons text-primary">video_library</i> &nbsp;
+                        <a href="">Videos</a>
+                    </div><br/>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+{% endblock content %}
+{% block javascripts %}
+{% endblock javascripts %}
