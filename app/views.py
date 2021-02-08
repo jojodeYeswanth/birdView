@@ -259,3 +259,15 @@ def video_capture(request):
     video.save()
 
     return render(request, 'detect-video.html', {'segment': 'live'})
+
+
+class BirdGuestImageView(CreateView):
+    model = Images
+    context_object_name = 'image_list'
+    template_name = 'image-guest-view.html'
+
+    def get_context_data(self, **kwargs):
+        context = {'segment': 'guest',
+                   "image_list": Images.objects.all().exclude(sharable=0),
+                   "video_list": Videos.objects.all().exclude(sharable=0)}
+        return context

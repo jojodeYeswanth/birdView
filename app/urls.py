@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^bird-profile/$', views.BirdProfileView.as_view(), name='birds'),
     url(r'^image-list/$', views.BirdImageView.as_view(), name='images'),
     url(r'^video-list/$', views.BirdVideoView.as_view(), name='videos'),
+    url(r'^guest-gallary-view/$', views.BirdGuestImageView.as_view(), name='guest-view'),
 
     url(r'^/(?P<stream_path>(.*?))/$', views.dynamic_stream, name="videostream"),
     url(r'^detect-video/$', views.index_screen, name='detect_video'),
